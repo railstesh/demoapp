@@ -1,38 +1,22 @@
 import React,{Component} from 'react';
-import Home from './Home';
-import Profile from './Profile';
+
 import './App.css';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  
+  Link
 } from "react-router-dom";
 
 
 class App extends Component {
   render(){
   return (
-   
-     <Router>
-       <div>
-          <ol>
-          <li>
-          <Link to="/Home">Home</Link>
-          </li>
-          <li>
-          <Link to="/Profile">Profile</Link>
-          </li>
-          </ol>
-          <Switch>
-          <Route path="/Home" component={Home}/>
-          <Route path="/Profile" component={Profile}/>
-          </Switch>
-        </div>
-       </Router>
-    
-    
+      <div>
+          <Link to="/home">Home</Link>&nbsp;&nbsp;
+          <Link to="/profile">Profile</Link>&nbsp;&nbsp;
+          <Link to="/registration">sign up</Link>&nbsp;&nbsp;
+          <Link to="/login">Login</Link>&nbsp;&nbsp;
+          
+          
+      </div>
   )}
 }
 export default App;

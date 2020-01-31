@@ -4,13 +4,14 @@ import React,{Component} from "react";
 
 
 class Logout extends Component {
-
-  componentWillMount() {
-   
-  }
-
   render() {
-    return null;
+    return(
+      <div>
+        <h6>
+          logout successfully
+        </h6>
+      </div>
+    );
   }
 }
 
