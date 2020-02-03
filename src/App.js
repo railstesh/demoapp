@@ -1,22 +1,30 @@
 import React,{Component} from 'react';
-
+import {Nav} from 'react-bootstrap';
 import './App.css';
-import {
-  Link
-} from "react-router-dom";
-
 
 class App extends Component {
   render(){
-  return (
+    return (
       <div>
-          <Link to="/home">Home</Link>&nbsp;&nbsp;
-          <Link to="/profile">Profile</Link>&nbsp;&nbsp;
-          <Link to="/registration">sign up</Link>&nbsp;&nbsp;
-          <Link to="/login">Login</Link>&nbsp;&nbsp;
-          
-          
+        <Nav variant="tabs" defaultActiveKey="/home">
+          <Nav.Item>
+            <Nav.Link eventKey="link-1" href="/home">Home</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-2" href="/profile">Profile</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-3" href="/registration">
+              Registration
+            </Nav.Link></Nav.Item>
+            <Nav.Item>
+            <Nav.Link eventKey="link-4" href="/login">
+              login
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
       </div>
-  )}
+    )
+  }
 }
 export default App;

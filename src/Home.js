@@ -1,10 +1,13 @@
 import React,{Component} from 'react';
+import DemoImg from '../src/images/images.jpg'
+
  class Home extends Component{
    render(){
      return(
-       <div>
-       <button>Create Account</button>
-       <button>login</button>
+       <div><center>
+         <img src={DemoImg}/>
+       <h4>welcome to my home....... </h4>
+       </center>
        </div>
      )
    }

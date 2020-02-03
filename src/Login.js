@@ -1,17 +1,15 @@
 import React,{Component} from "react";
-import history from './history';
+import { Redirect } from "react-router-dom";
 class Login extends Component {
   constructor(){
     super()
     this.state={
       password:"",
       email:"",
-      isAuthenticated:[]
+      isAuthenticated:[],
+      loginSuccess: false,
+      user: null
     }
-  }
-   validateForm=() =>{
-     const {password,email} =this.state;
-    return password.length > 0 && email.length > 0? true : false;
   }
   initialState=()=>{
    this.setState({
@@ -22,12 +20,13 @@ class Login extends Component {
   handleChange=(e) =>{
     this.setState({[e.target.name]: e.target.value})
   }
-  handleClick=()=>{
+  handleClick=(event)=>{
+    event.preventDefault();
     const info = {
       email:this.state.email,
       password:this.state.password,
     }
-    fetch('http://localhost:3001/login' ,{
+    fetch('http://localhost:8081/login' ,{
       method:'POST',
       dataType: "JSON",
       headers: {
@@ -36,29 +35,39 @@ class Login extends Component {
       body : JSON.stringify(info)
     })
       .then(res => {
-      return res.json()
+        if (res.status === 200) {
+          res.json().then(responseJSON => {
+            alert("Login Successfull");
+            this.setState({
+              loginSuccess: true,
+              user: responseJSON
+            })
+          });
+        } else if(res.status === 404) {
+          alert("Invalid Email or Password")
+        }
       })
-      .then(data=>{
-      this.setState({isAuthenticated:data});
-      if(data !== 'incorrect email'){
-        history.push({
-          pathname:`/profile`,
-          state: {data: data}
-        })
-      }
-    });
       this.initialState()
   }
   render(){
-  return (
-    <div>
-      <h3>User Login</h3>
-      email:<input type="email" name='email'value={this.state.email} onChange={this.handleChange}/>
-      password:<input type="text" name='password'value={this.state.password} onChange={this.handleChange}/>
-      <button onClick={this.handleClick}>Login</button>
-      
-    </div>
-  )
+    if (!this.state.loginSuccess) {
+      return (
+        <div>
+          <center>
+            <h3>User Login</h3><br></br>
+            <form onSubmit={(event) => this.handleClick(event)}>
+              email:<input required type="email" name='email'value={this.state.email} onChange={this.handleChange}/><br></br><br></br>
+              password:<input required type="text" name='password'value={this.state.password} onChange={this.handleChange}/><br></br><br></br><br></br>
+              <button type='submit'>Login</button>
+            </form>
+          </center>
+        </div>
+      )
+    } else {
+      return <div>
+        <Redirect to={{pathname:"/profile", state: this.state.user}} />
+      </div>
+    }
 }
 }
 export default Login;
