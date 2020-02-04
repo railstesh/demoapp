@@ -5,7 +5,7 @@ import DemoImg from '../src/images/images.jpg'
    render(){
      return(
        <div><center>
-         <img src={DemoImg}/>
+         <img src={DemoImg} alt=""/>
        <h4>welcome to my home....... </h4>
        </center>
        </div>

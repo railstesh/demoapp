@@ -18,7 +18,7 @@ class ProfilePage extends Component {
   }
   render() {
     if (Boolean(this.props.location.state)) {
-      const {name, image,email, phone_Number, address} = this.props.location.state
+      const {name, file,email, phone_Number, address} = this.props.location.state
       if(this.state.update){
       return (
         <div>
@@ -29,8 +29,8 @@ class ProfilePage extends Component {
           </Nav><br></br>
           <Button onClick={this.handleClick}>Edit profile</Button>
           <center>
-            <h3 className="center">WELCOME TO MY PAGE</h3>
-            <img class="circular" src={DemoImg} /><br></br>
+            <h3 className="center">WELCOME TO MY PAGE</h3><br></br>
+            <img class="circular" src={file}/><br></br>
             Name:<h5>{name}</h5>
             Email:<h5>{email}</h5>
             Phone:<h5>{phone_Number}</h5>

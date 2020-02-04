@@ -33,5 +33,7 @@
 
 
 .circular {
-  border-radius: 500%;
+  border-radius: 300%;
+  height: 10%;
+  width: 10%
 }
