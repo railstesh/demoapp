@@ -153,10 +153,10 @@ class Registration extends Component{
           <center>
             <form onSubmit={(event) => this.handleClick(event)}>
               <h2> USER REGISTRATION</h2><br></br>
+              <img  className='circular' src={this.state.file}/><br></br>
               <ReactFileReader handleFiles={this.handleFiles} base64={true}>
-                Upload_Image
+                Upload_Image Here
                </ReactFileReader><br></br>
-               <img  className='circular' src={this.state.file}  height="100" width="20%" /><br></br>
               NAME:<input type="text" required name="name" value={this.state.name} onChange={this.handleChange}/><br></br><br></br>
               PHONE_NUMBER:<input type="number" required name="phone_Number" value={this.state.phone_Number} onChange={this.handleChange}/><br></br><br></br>
               ADDRESS<input type="text" name="address" required value={this.state.address} onChange={this.handleChange}/><br></br><br></br>

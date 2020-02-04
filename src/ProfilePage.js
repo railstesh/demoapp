@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Nav,Button} from 'react-bootstrap';
 import './App.css';
 import { Redirect } from 'react-router-dom';
-import DemoImg from '../src/images/images.jpg'
 
 class ProfilePage extends Component {
   constructor(){
